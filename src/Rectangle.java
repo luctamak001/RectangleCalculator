@@ -3,7 +3,7 @@ public class Rectangle {
     // Instance Variables (fields)
     private double length;
     private double width;
-    private String id;
+    private final String id;
     private String units;
 
     // Initializer Block
@@ -15,7 +15,13 @@ public class Rectangle {
     public Rectangle(double length, double width, String units) {
         if (length < 0) {
             System.out.println("Invalid length. Should be positive.");
-            System.out.println("");
+            System.out.println("Assigning default value of 1 to length.");
+            length = 1;
+        }
+        if (width < 0) {
+            System.out.println("Invalid width. Should be positive.");
+            System.out.println("Assigning default value of 1 to width.");
+            width = 1;
         }
         this.length = length;
         this.width = width;
@@ -23,6 +29,16 @@ public class Rectangle {
     }
 
     public Rectangle(int length, int width) {
+        if (length < 0) {
+            System.out.println("Invalid length. Should be positive.");
+            System.out.println("Assigning default value of 1 to length.");
+            length = 1;
+        }
+        if (width < 0) {
+            System.out.println("Invalid width. Should be positive.");
+            System.out.println("Assigning default value of 1 to width.");
+            width = 1;
+        }
         this.length = length;
         this.width = width;
         this.units = "unite";
@@ -43,6 +59,7 @@ public class Rectangle {
 
     }
 
+
     // Methods
     public double getLength() {
         return length;
@@ -62,7 +79,12 @@ public class Rectangle {
     }
 
     public void setWidth(double width) {
-        // TODO: same as length.
+        if (width > 0) {
+            this.width = width;
+        } else {
+            System.out.println("Invalid length.  Length should be greater than 0.");
+            System.out.println("Length not Set");
+        }
     }
 
     public String getId() {
@@ -116,7 +138,7 @@ public class Rectangle {
     }
 
     // TODO: scale(factor).  scale width and height using factor.  Hint:  this.length *= factor
-    public void scale(double factor){
+    public void scale(double factor) {
         length *= factor;
         width *= factor;
     }
